@@ -33,3 +33,7 @@ securityContext:
       - FOWNER
       - SETGID
       - SETUID
+rbac:
+  create: true
+operator:
+  replicas: 1
