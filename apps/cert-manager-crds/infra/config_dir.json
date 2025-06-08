@@ -1,0 +1,13 @@
+{
+  "appName": "cert-manager-crds",
+  "userGivenName": "cert-manager-crds",
+  "destNamespace": "cert-manager",
+  "destServer": "https://kubernetes.default.svc",
+  "srcPath": "releases/download/v1.17.2/cert-manager.crds.yaml",
+  "srcRepoURL": "https://github.com/cert-manager/cert-manager.git",
+  "srcTargetRevision": "",
+  "labels": null,
+  "annotations": null,
+  "exclude": "",
+  "include": ""
+}
