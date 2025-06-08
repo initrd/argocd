@@ -11,7 +11,7 @@ spec:
   project: default
   source:
     chart: *app
-    repoURL: oci://ghcr.io/nginx/charts/
+    repoURL: ghcr.io/nginx/charts/nginx-ingress
     targetRevision: 2.x
     helm:
       releaseName: *app
