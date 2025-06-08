@@ -1,0 +1,13 @@
+{
+  "appName": "external-secrets-crds",
+  "userGivenName": "external-secrets-crds",
+  "destNamespace": "external-secrets",
+  "destServer": "https://kubernetes.default.svc",
+  "srcPath": "manifests/deploy/crds",
+  "srcRepoURL": "https://github.com/external-secrets/external-secrets.git",
+  "srcTargetRevision": "v0.17.0",
+  "labels": null,
+  "annotations": null,
+  "exclude": "",
+  "include": ""
+}
