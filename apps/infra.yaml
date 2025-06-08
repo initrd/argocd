@@ -1,0 +1,17 @@
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: aoa-infra
+spec:
+  destination:
+    name: in-cluster
+    namespace: argocd
+  source:
+    path: apps/infra
+    repoURL: https://github.com/initrd/algocd.git
+    targetRevision: main
+  project: default
+  syncPolicy:
+    automated:
+      prune: true
+      selfHeal: true
