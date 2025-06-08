@@ -19,6 +19,10 @@ spec:
         controller:
           ingressClassResource:
             controllerValue: nginx.org/ingress-controller
+          service:
+            type: NodePort
+            external:
+              enabled: false
   destination:
     name: in-cluster
     namespace: *app
