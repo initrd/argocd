@@ -17,7 +17,7 @@ spec:
       helm:
         valueFiles:
         - $values/apps/infra/values/cilium.yaml
-    - repoURL: https://github.com/joeypiccola/k8s_home.git
+    - repoURL: https://github.com/initrd/argocd.git
       targetRevision: main
       ref: values
   destination:
