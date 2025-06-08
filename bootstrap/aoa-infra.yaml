@@ -8,7 +8,7 @@ spec:
     namespace: argocd
   source:
     path: apps/infra
-    repoURL: https://github.com/initrd/algocd.git
+    repoURL: https://github.com/initrd/argocd.git
     targetRevision: main
   project: default
   syncPolicy:
