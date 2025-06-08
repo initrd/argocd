@@ -1,6 +1,6 @@
 ---
 k8sServiceHost: localhost # talos' KubePrism
-k8sServicePort: 7445
+k8sServicePort: 9443
 kubeProxyReplacement: true # use Cilium
 gatewayAPI:
   enabled: true
