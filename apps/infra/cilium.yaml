@@ -1,0 +1,31 @@
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: cilium
+  namespace: argocd
+  annotations:
+    argocd.argoproj.io/sync-wave: "40"
+    argocd.argoproj.io/compare-options: ServerSideDiff=true # https://github.com/argoproj/argo-cd/issues/19038
+  finalizers:
+    - resources-finalizer.argocd.argoproj.io
+spec:
+  project: default
+  sources:
+    - chart: cilium
+      repoURL: https://helm.cilium.io/
+      targetRevision: 1.17.4 # 1.15.8
+      helm:
+        valueFiles:
+        - $values/apps/infra/values/cilium.yaml
+    - repoURL: https://github.com/joeypiccola/k8s_home.git
+      targetRevision: main
+      ref: values
+  destination:
+    name: in-cluster
+    namespace: kube-system
+  syncPolicy:
+    automated:
+      prune: true
+      selfHeal: true
+    syncOptions:
+      - CreateNamespace=true
