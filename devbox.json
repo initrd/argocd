@@ -1,0 +1,28 @@
+{
+  "packages": [
+    "k9s@0.50.5",
+    "kubectl@1.33.1",
+    "kubelogin-oidc@1.32.4",
+    "kubernetes-helm@3.17.3",
+    "kubernetes-helmPlugins.helm-diff@3.12.0",
+    "kustomize@5.6.0",
+    "pre-commit@4.0.1",
+    "yq-go@4.45.4",
+    "argocd@2.14.11",
+    "argocd-autopilot@0.4.19",
+  ],
+  "env": {
+    "HELM_PLUGINS": "$PWD/.devbox/nix/profile/default"
+  },
+  "shell": {
+    "init_hook": [
+      "echo 'Welcome to devbox!' > /dev/null",
+      "alias k=kubectl"
+    ],
+    "scripts": {
+      "test": [
+        "echo \"Error: no test specified\" && exit 1"
+      ]
+    }
+  }
+}
