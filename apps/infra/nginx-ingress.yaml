@@ -1,0 +1,27 @@
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: &app nginx-ingress
+  namespace: argocd
+  annotations:
+    argocd.argoproj.io/sync-wave: "15"
+  finalizers:
+    - resources-finalizer.argocd.argoproj.io
+spec:
+  project: default
+  source:
+    chart: *app
+    repoURL: oci://ghcr.io/nginx/charts/nginx-ingress
+    targetRevision: 2.x
+    helm:
+      releaseName: *app
+  destination:
+    name: in-cluster
+    namespace: *app
+  syncPolicy:
+    automated:
+      prune: true
+      selfHeal: true
+    syncOptions:
+      - CreateNamespace=true
+
