@@ -12,7 +12,7 @@ spec:
   source:
     chart: *app
     repoURL: ghcr.io/nginx/charts
-    targetRevision: 2.x
+    targetRevision: 4.x
     helm:
       releaseName: *app
   destination:
