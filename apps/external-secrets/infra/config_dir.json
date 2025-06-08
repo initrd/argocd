@@ -1,0 +1,13 @@
+{
+  "appName": "external-secrets",
+  "userGivenName": "external-secrets",
+  "destNamespace": "external-secrets",
+  "destServer": "https://kubernetes.default.svc",
+  "srcPath": "releases/download/v0.17.0/external-secrets.yaml",
+  "srcRepoURL": "https://github.com/external-secrets/external-secrets.git",
+  "srcTargetRevision": "",
+  "labels": null,
+  "annotations": null,
+  "exclude": "",
+  "include": ""
+}
