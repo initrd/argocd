@@ -22,7 +22,7 @@ spec:
       ref: values
   destination:
     name: in-cluster
-    namespace: kube-system
+    namespace: cilium
   syncPolicy:
     automated:
       prune: true
