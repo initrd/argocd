@@ -15,6 +15,10 @@ spec:
     targetRevision: 2.x
     helm:
       releaseName: *app
+      valuesObject:
+        controller:
+          ingressClassResource:
+            controllerValue: nginx.org/ingress-controller
   destination:
     name: in-cluster
     namespace: *app
