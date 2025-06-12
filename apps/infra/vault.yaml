@@ -1,0 +1,49 @@
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: &app vault
+  namespace: argocd
+  annotations:
+    argocd.argoproj.io/sync-wave: "10"
+  finalizers:
+    - resources-finalizer.argocd.argoproj.io
+spec:
+  project: default
+  source:
+    chart: *app
+    repoURL: https://helm.releases.hashicorp.com
+    targetRevision: 0.30.0
+    helm:
+      releaseName: *app
+      valuesObject:
+        global:
+          namespace: *app
+        server:
+          standalone:
+            enabled: true
+            config: |
+              listener "tcp" {
+                tls_disable = true
+                address = "[::]:8200"
+                cluster_address = "[::]:8201"
+              }
+
+              storage "file" {
+                path = "/vault/data"
+              }
+          service:
+            enabled: true
+          dataStorage:
+            enabled: true
+            size: 100Mi
+            storageClass: null
+            accessMode: ReadWriteOnce
+  destination:
+    name: in-cluster
+    namespace: *app
+  syncPolicy:
+    automated:
+      prune: true
+      selfHeal: true
+    syncOptions:
+      - CreateNamespace=true
