@@ -36,7 +36,7 @@ spec:
           dataStorage:
             enabled: true
             size: 100Mi
-            storageClass: null
+            storageClass: openebs-hostpath
             accessMode: ReadWriteOnce
   destination:
     name: in-cluster
