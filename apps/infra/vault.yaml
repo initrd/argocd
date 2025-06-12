@@ -19,9 +19,25 @@ spec:
         global:
           namespace: *app
         server:
-          affinity: ""
-          dev:
+          standalone:
             enabled: true
+            config: |
+              listener "tcp" {
+                tls_disable = true
+                address = "[::]:8200"
+                cluster_address = "[::]:8201"
+              }
+
+              storage "file" {
+                path = "/vault/data"
+              }
+          service:
+            enabled: true
+          dataStorage:
+            enabled: true
+            size: 100Mi
+            storageClass: null
+            accessMode: ReadWriteOnce
   destination:
     name: in-cluster
     namespace: *app
