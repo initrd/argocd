@@ -1,0 +1,33 @@
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: &app vault
+  namespace: argocd
+  annotations:
+    argocd.argoproj.io/sync-wave: "10"
+  finalizers:
+    - resources-finalizer.argocd.argoproj.io
+spec:
+  project: default
+  source:
+    chart: *app
+    repoURL: https://helm.releases.hashicorp.com
+    targetRevision: 0.30.0
+    helm:
+      releaseName: *app
+      valuesObject:
+        global:
+          namespace: *app
+        server:
+          affinity: ""
+          dev:
+            enabled: true
+  destination:
+    name: in-cluster
+    namespace: *app
+  syncPolicy:
+    automated:
+      prune: true
+      selfHeal: true
+    syncOptions:
+      - CreateNamespace=true
