@@ -20,8 +20,11 @@ spec:
           namespace: *app
         server:
           affinity: ""
+          dev:
+            enabled: true
           ha:
             enabled: true
+            replicas: 1
             raft:
               setNodeId: true
               config: |
